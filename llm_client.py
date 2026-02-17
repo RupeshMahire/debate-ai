@@ -10,10 +10,10 @@ class LLMClient:
         # Using the provided Groq API key from environment
         self.api_key = os.getenv("GROQ_API_KEY") 
         if not self.api_key:
-            print("\n[!] GROQ_API_KEY environment variable not found.")
-            self.api_key = input("Please enter your Groq API key: ").strip()
-            if not self.api_key:
-                raise ValueError("API key is required to run this prototype.")
+            raise ValueError(
+                "GROQ_API_KEY environment variable not found. "
+                "Please set it in your environment or Render dashboard settings."
+            )
         self.base_url = "https://api.groq.com/openai/v1/chat/completions"
         self.default_model = "llama-3.3-70b-versatile"
 
