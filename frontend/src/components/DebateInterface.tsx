@@ -96,7 +96,8 @@ export function DebateInterface() {
 
     // Start debate
     const startDebate = () => {
-        const socket = new WebSocket('ws://localhost:8000/ws/debate')
+        const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'wss://debate-ai.onrender.com/ws/debate'
+        const socket = new WebSocket(wsUrl)
 
         socket.onopen = () => {
             console.log('WebSocket connected')
