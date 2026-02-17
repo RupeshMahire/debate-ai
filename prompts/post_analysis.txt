@@ -1,0 +1,10 @@
+Analyze the following debate transcript:
+{transcript}
+
+Provide a structured evaluation:
+1. Strongest Argument: [Identify the user's strongest point]
+2. Weakest Argument: [Identify the user's weakest point]
+3. Improvement Suggestions: [3 specific tips for the user]
+4. Persuasiveness Score: [Number from 1 to 10]
+
+Be objective and constructive.

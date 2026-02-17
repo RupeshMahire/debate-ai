@@ -1,0 +1,7 @@
+Analyze the following argument for logical fallacies:
+"{argument}"
+
+Identify any specific logical fallacies used. 
+Be extremely concise.
+If no fallacies are found, respond with: "No major fallacies detected"
+Return only the fallacy name and a brief 1-sentence explanation if found.

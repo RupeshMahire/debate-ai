@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.env.local
+.env.*
+!.env.example
+
+# Next.js
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Project specific
+logs/
+*.log
