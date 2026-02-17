@@ -2,9 +2,5 @@ fastapi
 uvicorn
 requests
 python-dotenv
-sounddevice
-numpy
-scipy
 edge-tts
 duckduckgo-search
-playsound

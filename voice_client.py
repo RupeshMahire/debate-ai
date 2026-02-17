@@ -1,8 +1,5 @@
 import os
 import requests
-import sounddevice as sd
-import numpy as np
-from scipy.io.wavfile import write
 import tempfile
 import asyncio
 import edge_tts
@@ -16,6 +13,14 @@ class VoiceClient:
         # self.voice = "en-US-AriaNeural" # Realistic female voice
         
     def record_audio(self, duration=5, fs=44100):
+        try:
+            import sounddevice as sd
+            import numpy as np
+            from scipy.io.wavfile import write
+        except ImportError:
+            print("[!] Audio recording libraries (sounddevice, numpy, scipy) not installed.")
+            return None
+
         print(f"\n[Recording for {duration} seconds... Speak now!]")
         recording = sd.rec(int(duration * fs), samplerate=fs, channels=1)
         sd.wait()
@@ -70,15 +75,15 @@ class VoiceClient:
             
             # Play using available method
             try:
-                from playsound import playsound
-                playsound(output_file)
-            except ImportError:
-                # Fallback to system default player
-                print(f"[!] playsound not installed. Opening with system player...")
-                os.startfile(output_file)
-            except Exception as ps_error:
-                print(f"[!] playsound failed: {ps_error}. Opening with system player...")
-                os.startfile(output_file)
+                import playsound
+                playsound.playsound(output_file)
+            except (ImportError, Exception) as error:
+                # Fallback to system default player or skip if headless
+                if hasattr(os, 'startfile'):
+                    print(f"[!] playsound failed or not found: {error}. Opening with system player...")
+                    os.startfile(output_file)
+                else:
+                    print(f"[!] Audio playback not supported in this environment: {error}")
             
         except Exception as e:
             print(f"TTS Error: {e}")
